@@ -6,6 +6,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TekusApp.Domain.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using TekusApp.Domain.Behaviors;
+using FamiliesApp.Domain.Infrastructure.Repositories;
+using System;
+using AutoMapper;
 
 namespace TekusApp
 {
@@ -26,7 +30,16 @@ namespace TekusApp
                 serverOptions => serverOptions.MigrationsAssembly("TekusApp"))
             );
 
-            services.AddControllers();
+            services.AddScoped<DbContext>(p => p.GetRequiredService<ApplicationDbContext>());
+
+            services.AddScoped<IClientBehavior, ClientBehavior>();
+            services.AddTransient(typeof(IDataStorage<>), typeof(DataStorage<>));
+
+
+            services.AddControllers().ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -37,6 +50,10 @@ namespace TekusApp
                     Title = "Tekus APP",      
                 });
             });
+
+            //services.AddAutoMapper();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
