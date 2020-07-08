@@ -52,7 +52,7 @@ namespace TekusApp
             });
 
             //services.AddAutoMapper();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(typeof(Startup));
 
         }
 
