@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TekusApp.Domain.Models;
 
 namespace TekusApp.Domain.Infrastructure.Data
@@ -15,5 +12,13 @@ namespace TekusApp.Domain.Infrastructure.Data
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<ServiceCountry> ServicesCountries { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+           
+        }
     }
 }

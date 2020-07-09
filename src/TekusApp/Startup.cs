@@ -42,6 +42,8 @@ namespace TekusApp
             services.AddScoped<DbContext>(p => p.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<IClientBehavior, ClientBehavior>();
+            services.AddScoped<IServiceBehavior, ServiceBehavior>();
+            services.AddScoped<IServiceCountryBehavior, ServiceCountryBehavior>();
             services.AddTransient(typeof(IDataStorage<>), typeof(DataStorage<>));
 
 
@@ -64,6 +66,7 @@ namespace TekusApp
 
             //services.AddAutoMapper();
             services.AddAutoMapper(typeof(Startup));
+
 
         }
 
