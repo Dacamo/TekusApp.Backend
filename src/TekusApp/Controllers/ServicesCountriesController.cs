@@ -12,7 +12,7 @@ namespace TekusApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServicesCountriesController
+    public class ServicesCountriesController : ControllerBase
     {
         private readonly IServiceCountryBehavior _serviceCountryBehavior;
         private readonly IMapper _mapper;

@@ -8,7 +8,7 @@ namespace TekusApp.Commands
 {
     public class CreateClient
     {
-        [Required]
+        [Required(ErrorMessage = "Please enter NIT")]
         public string NIT { get; set; }
         [Required]
         public string Name { get; set; }

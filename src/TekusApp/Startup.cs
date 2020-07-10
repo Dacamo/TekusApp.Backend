@@ -10,6 +10,7 @@ using TekusApp.Domain.Behaviors;
 using FamiliesApp.Domain.Infrastructure.Repositories;
 using System;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TekusApp
 {
@@ -34,6 +35,9 @@ namespace TekusApp
                     .AllowAnyHeader());
             });
 
+            services.AddMvc(options =>
+                options.SuppressAsyncSuffixInActionNames = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 serverOptions => serverOptions.MigrationsAssembly("TekusApp"))
@@ -44,6 +48,7 @@ namespace TekusApp
             services.AddScoped<IClientBehavior, ClientBehavior>();
             services.AddScoped<IServiceBehavior, ServiceBehavior>();
             services.AddScoped<IServiceCountryBehavior, ServiceCountryBehavior>();
+            services.AddScoped<ICountryBehavior, CountryBehavior>();
             services.AddTransient(typeof(IDataStorage<>), typeof(DataStorage<>));
 
 
@@ -52,7 +57,6 @@ namespace TekusApp
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-         
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

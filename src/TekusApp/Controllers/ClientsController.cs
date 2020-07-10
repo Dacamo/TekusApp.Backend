@@ -6,12 +6,14 @@ using TekusApp.Domain.Behaviors;
 using TekusApp.Domain.Models;
 using AutoMapper;
 using TekusApp.Commands;
+using System;
+using System.Linq;
 
 namespace TekusApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController
+    public class ClientsController: ControllerBase
     {
         private readonly IClientBehavior _clientBehavior;
         private readonly IMapper _mapper;
@@ -23,11 +25,17 @@ namespace TekusApp.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(200)]
-        public async Task CreateAsync(CreateClient createClient)
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<Client>> CreateAsync([FromBody]CreateClient createClient)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var client = _mapper.Map<Client>(createClient);
             await _clientBehavior.CreateAsync(client);
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = client.Id }, client);
         }
 
         [HttpGet]
@@ -45,7 +53,7 @@ namespace TekusApp.Controllers
             var existingClient = await _clientBehavior.GetByIdAsync(id);
             if (existingClient == null)
             {
-                return new NotFoundResult();
+                return NotFound();
             }
             return existingClient;
         }
@@ -58,12 +66,12 @@ namespace TekusApp.Controllers
             var client = await _clientBehavior.GetByIdAsync(id);
             if (client == null)
             {
-                return new NotFoundResult();
+                return NotFound();
             }
             _mapper.Map(updateClient, client);
             await _clientBehavior.UpdateAsync(client);
 
-            return new NoContentResult();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -74,11 +82,11 @@ namespace TekusApp.Controllers
             var existingClient = await _clientBehavior.GetByIdAsync(id);
             if (existingClient == null)
             {
-                return new NotFoundResult();
+                return NotFound();
             }
 
             await _clientBehavior.DeleteAsync(existingClient);
-            return new NoContentResult();
+            return NoContent();
         }
     }
 
