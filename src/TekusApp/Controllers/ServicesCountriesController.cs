@@ -45,5 +45,13 @@ namespace TekusApp.Controllers
             await _serviceCountryBehavior.DeleteAsync(existingServiceCountry);
             return new NoContentResult();
         }
+
+        [HttpGet("serviceId/{serviceId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<List<ServiceCountry>> GetByClientIdAync(int serviceId)
+        {
+            return await _serviceCountryBehavior.GetAllByServiceIdAsync(serviceId);
+        }
     }
 }

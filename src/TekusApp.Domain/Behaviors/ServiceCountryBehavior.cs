@@ -32,9 +32,9 @@ namespace TekusApp.Domain.Behaviors
             await _serviceCountryRepository.DeleteAsync(serviceCountry);
         }
 
-        public async Task<List<ServiceCountry>> GetAllByServiceIdAsync(int id)
+        public async Task<List<ServiceCountry>> GetAllByServiceIdAsync(int serviceId)
         {
-            return await _serviceCountryRepository.FindAsync(i => i.ServiceId == id);
+            return await _serviceCountryRepository.FindAsync(i => i.ServiceId == serviceId, includeProperties: "Country");
         }
 
         public async Task<ServiceCountry> GetByIdAsync(int id)
