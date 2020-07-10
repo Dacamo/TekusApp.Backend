@@ -13,5 +13,8 @@ namespace TekusApp.Domain.Behaviors
         Task<Service> GetByIdAsync(int id);
         Task DeleteAsync(Service service);
         Task UpdateAsync(Service service);
+        Task<List<Service>> GetByClientIdAsync(int id);
+        Task<int> CountAsync();
+
     }
 }

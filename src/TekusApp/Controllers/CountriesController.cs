@@ -8,12 +8,12 @@ namespace TekusApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountryController: ControllerBase
+    public class CountriesController: ControllerBase
     {
         private readonly ICountryBehavior _countrytBehavior;
         
 
-        public CountryController(ICountryBehavior countryBehavior)
+        public CountriesController(ICountryBehavior countryBehavior)
         {
             _countrytBehavior = countryBehavior; 
         }

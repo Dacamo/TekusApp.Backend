@@ -79,5 +79,23 @@ namespace TekusApp.Controllers
             await _serviceBehavior.DeleteAsync(existingService);
             return new NoContentResult();
         }
+
+
+        [HttpGet("clientId/{clientId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<List<Service>> GetByClientIdAync(int clientId)
+        {
+            return await _serviceBehavior.GetByClientIdAsync(clientId);
+        }
+
+        [HttpGet("Count")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<int>> CountAsync()
+        {
+            return await _serviceBehavior.CountAsync();
+        }
+
+
     }
 }

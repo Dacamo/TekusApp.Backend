@@ -46,5 +46,15 @@ namespace TekusApp.Domain.Behaviors
             await _serviceRepository.UpdateAsync(service);
         }
 
+        public async Task<List<Service>> GetByClientIdAsync(int id)
+        {
+            return await _serviceRepository.FindAsync(client => client.ClientId == id);
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _serviceRepository.Count();
+        }
+
     }
 }

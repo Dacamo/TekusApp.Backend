@@ -1,7 +1,6 @@
 ﻿using FamiliesApp.Domain.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TekusApp.Domain.Models;
 
@@ -44,6 +43,11 @@ namespace TekusApp.Domain.Behaviors
         public async Task UpdateAsync(Client client)
         {
             await _clientRepository.UpdateAsync(client);
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _clientRepository.Count();
         }
     }
 }

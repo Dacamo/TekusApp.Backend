@@ -88,6 +88,13 @@ namespace TekusApp.Controllers
             await _clientBehavior.DeleteAsync(existingClient);
             return NoContent();
         }
+
+        [HttpGet("Count")]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<int>> CountAsync()
+        {
+            return await _clientBehavior.CountAsync();
+        }
     }
 
 }

@@ -13,5 +13,6 @@ namespace TekusApp.Domain.Behaviors
         Task<Client> GetByIdAsync(int id);
         Task DeleteAsync(Client client);
         Task UpdateAsync(Client client);
+        Task<int> CountAsync();
     }
 }
