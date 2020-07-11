@@ -11,6 +11,7 @@ using FamiliesApp.Domain.Infrastructure.Repositories;
 using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using TekusApp.Utils;
 
 namespace TekusApp
 {
@@ -79,7 +80,8 @@ namespace TekusApp
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+                app.ConfigureExceptionHandler();
             }
 
             app.UseCors("CorsPolicy");

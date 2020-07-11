@@ -24,6 +24,13 @@ namespace TekusApp.Domain.Behaviors
                 throw new ArgumentNullException(nameof(serviceCountry));
             }
 
+            var existingServiceCountry = await _serviceCountryRepository.FirstOrDefaultAsync(c => c.CountryId == serviceCountry.CountryId && c.ServiceId == serviceCountry.ServiceId);
+
+            if( existingServiceCountry != null)
+            {
+                throw new Exception("Ya se encuentra registrado en ese país");
+            }
+
             await _serviceCountryRepository.InsertAsync(serviceCountry);
         }
 

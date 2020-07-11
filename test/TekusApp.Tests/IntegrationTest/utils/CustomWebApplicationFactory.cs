@@ -29,6 +29,7 @@ namespace TekusApp.Tests.IntegrationTest.utils
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
                     options.UseInMemoryDatabase("InMemoryDbForTesting");
+
                 });
 
                 // Build the service provider.
@@ -44,7 +45,7 @@ namespace TekusApp.Tests.IntegrationTest.utils
                         .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 
                     // Ensure the database is created.
-                    db.Database.EnsureCreated();
+                    //db.Database.EnsureCreated();
 
                     /*try
                     {
