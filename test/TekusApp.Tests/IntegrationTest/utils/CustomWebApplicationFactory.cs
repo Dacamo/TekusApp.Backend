@@ -9,7 +9,7 @@ using TekusApp.Domain.Infrastructure.Data;
 namespace TekusApp.Tests.IntegrationTest.utils
 {
     public class CustomWebApplicationFactory<TStartup>
-     : WebApplicationFactory<TStartup> where TStartup : class
+    : WebApplicationFactory<TStartup> where TStartup : class
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -46,8 +46,7 @@ namespace TekusApp.Tests.IntegrationTest.utils
                     // Ensure the database is created.
                     db.Database.EnsureCreated();
 
-                    /*
-                    try
+                    /*try
                     {
                         // Seed the database with test data.
                         Utilities.InitializeDbForTests(db);
@@ -61,5 +60,4 @@ namespace TekusApp.Tests.IntegrationTest.utils
             });
         }
     }
-
 }
