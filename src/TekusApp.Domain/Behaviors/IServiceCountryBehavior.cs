@@ -12,5 +12,8 @@ namespace TekusApp.Domain.Behaviors
         Task DeleteAsync(ServiceCountry serviceCountry);
         Task<List<ServiceCountry>> GetAllByServiceIdAsync(int id);
         Task<ServiceCountry> GetByIdAsync(int id);
+        Task<List<ServicesByCountry>> GetQuantity();
+        
+
     }
 }

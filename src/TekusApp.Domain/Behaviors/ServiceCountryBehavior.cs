@@ -40,7 +40,39 @@ namespace TekusApp.Domain.Behaviors
         public async Task<ServiceCountry> GetByIdAsync(int id)
         {
             return await _serviceCountryRepository.FirstOrDefaultAsync(i => i.Id == id);
+       
         }
-   
+        public async Task<List<ServicesByCountry>> GetQuantity()
+        {
+            var servicesCountries = await _serviceCountryRepository.FindAsync(includeProperties: "Country");
+
+            var dictionary = new Dictionary<string, int>();
+
+            foreach (var serviceCountry in servicesCountries)
+            {
+                if (!dictionary.ContainsKey(serviceCountry.Country.Name))
+                {
+                    dictionary.Add(serviceCountry.Country.Name, 1);
+                }
+                else
+                {
+                    dictionary[serviceCountry.Country.Name]++;
+                }
+
+
+            }
+            var servicesByCountries = new List<ServicesByCountry>();
+            foreach (var item in dictionary)
+            {
+                servicesByCountries.Add(new ServicesByCountry()
+                {
+                    Name = item.Key,
+                    Quantity = item.Value
+                }); ;
+            }
+
+            return servicesByCountries;
+
+        }
     }
 }

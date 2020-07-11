@@ -53,5 +53,14 @@ namespace TekusApp.Controllers
         {
             return await _serviceCountryBehavior.GetAllByServiceIdAsync(serviceId);
         }
+
+        [HttpGet("count")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<List<ServicesByCountry>> CountServicesByCountry()
+        {
+            return await _serviceCountryBehavior.GetQuantity();
+        }
+
     }
 }
