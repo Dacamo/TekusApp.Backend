@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TekusApp", "src\TekusApp\TekusApp.csproj", "{2B087689-1991-4505-A202-7F0BFD96D5BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TekusApp.Domain", "src\TekusApp.Domain\TekusApp.Domain.csproj", "{67C1FC18-B125-4224-99FA-4FC07D553168}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TekusApp.Tests", "test\TekusApp.Tests\TekusApp.Tests.csproj", "{AD259820-D9E9-4195-9F03-C0183071D94A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A7237312-1267-4A0D-AD8F-A01F8F7BD511}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{64CD68B6-B1AC-4DC8-B0D7-D62C1FEAD9EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TekusApp.Domain", "src\TekusApp.Domain\TekusApp.Domain.csproj", "{67C1FC18-B125-4224-99FA-4FC07D553168}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TekusApp.Tests", "test\TekusApp.Tests\TekusApp.Tests.csproj", "{AD259820-D9E9-4195-9F03-C0183071D94A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
