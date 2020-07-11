@@ -49,5 +49,11 @@ namespace TekusApp.Domain.Behaviors
         {
             return await _clientRepository.Count();
         }
+
+        public async Task<List<Client>> GetByRangeAsync(int page)
+        {
+            return await _clientRepository.FindAsync(skip: page * 4, take: 4);
+        }
+
     }
 }

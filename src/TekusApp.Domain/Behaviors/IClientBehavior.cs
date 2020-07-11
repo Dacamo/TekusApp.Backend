@@ -14,5 +14,7 @@ namespace TekusApp.Domain.Behaviors
         Task DeleteAsync(Client client);
         Task UpdateAsync(Client client);
         Task<int> CountAsync();
+        Task<List<Client>> GetByRangeAsync(int page);
+ 
     }
 }

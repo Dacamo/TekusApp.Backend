@@ -95,6 +95,13 @@ namespace TekusApp.Controllers
         {
             return await _clientBehavior.CountAsync();
         }
+
+        [HttpGet("pagination/{page}")]
+        [ProducesResponseType(200)]
+        public async Task<List<Client>> GetByRangeAsync(int page)
+        {
+            return await _clientBehavior.GetByRangeAsync(page);
+        }
     }
 
 }
